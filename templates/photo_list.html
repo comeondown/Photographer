@@ -1,0 +1,43 @@
+{% extends 'base_main.html' %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}
+	<title>{{ album }}</title>
+{% endblock %}
+{% block content %}
+	<main class="main-container">
+		
+		<div class="photo-list-inner">
+			<div class="loader_icon">
+				<img width="64px" src="{% static 'img/icons/loader.gif' %}">
+			</div>
+			<div class="full-image-holder">
+
+				<div class="full-image-holder__close">
+				</div>
+				<div class="full-image-holder__next-photo">
+				</div>
+				<div class="full-image-holder__prev-photo">
+				</div>
+				<div class="full-image-holder__photo-info">
+					<div class="full-image-holder__name"></div>
+					<div class="full-image-holder__descr"></div>
+				</div>
+				<div class="full-image-holder__photo-holder">
+				</div>
+			</div>
+			<div class="photos-container" style="display:none">
+				{% for photo in object_list %}
+					{% thumbnail photo.photo "350x350" crop="center" as im %}<img class="photo-preview" data-image="{{photo.photo.url}}" src="{{ im.url }}" data-name="{{photo.name}}" data-descr="{{photo.description}}">{% empty %}
+			    		<p>No photo</p>
+					{% endthumbnail %}
+				{% endfor %}
+			</div>
+			
+			
+		</div>
+	</main>
+{% endblock %}
+{% block scripts %}
+	<script src='{% static "js/photolist.js" %}'> </script>
+{% endblock %}

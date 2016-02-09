@@ -1,0 +1,49 @@
+{% extends 'base_main.html' %}
+{% block content %}
+	<div class="post-page-wrapper">
+		<div class="single-post">
+			<article class="single-post__post">
+				<div class="single-post__date-created">{{object.date_created}}</div>
+				<div class="single-post__title">{{object.title}}</div>
+				<div class="single-post__text">{{object.text | safe}}</div>
+			</article>
+		</div>
+		<div class="post-comments">
+			<div class="post-comments__inner">
+					{% for c in comms %}
+						{% if not c.hide %}
+							<div class="post-comment">
+								<div class="post-comment__author">
+								{% if c.admin_added %}
+									<b  style="font-size:0.7rem">Ludmila K.</b>
+								{% else %}
+									{{c.author}}
+								{% endif %}
+								</div>
+								<div class="post-comment__text">
+									{{c.text }}
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+		</div>
+	</div>
+		<div class="single-post__form">
+			<form method="post">
+				{% csrf_token %}
+				{{ form.author.errors }}
+				{% if user.is_authenticated %}
+					<p>Ludmila K.</p>
+				{% else %}
+					<p>{{ form.author }}</p>
+				{% endif %}
+
+				{{ form.text.errors }}
+				<p>{{ form.text }}</p>
+				<input type="submit" value="Send">
+			</form>
+		</div>
+
+	
+{% endblock %}

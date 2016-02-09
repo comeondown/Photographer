@@ -1,0 +1,11 @@
+{% extends 'base_main.html' %}
+
+{% block title %}
+	<title>Путешествия</title>
+{% endblock %}
+{% block content %}
+	<h1>Альбомы путешествия</h1>
+	{% for album in travel_albums %}
+		<a href={% url 'photo_list' album.title%}>{{album.title}}</a>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+<html>
+<head>
+	{% block title %}
+		<title>Главная</title>
+	{% endblock %}
+	
+</head>
+
+{% block bodyopentag %}
+	<body class="{{body_class}}">
+{% endblock %}
+	
+{% block content %}
+{% endblock %}
+
+<script src="{% static 'js/all_pages.js' %}"></script>
+
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

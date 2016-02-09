@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+	<link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+	{% block title %}
+	{% endblock %}
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,900,300' rel='stylesheet' type='text/css'>
+	<link href="{% static 'css/styles.css' %}"  rel="stylesheet">
+	<script type="text/javascript" src="{% static 'js/googleFonts.js' %}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="{% static 'js/fraemworks/detect.min.js' %}"></script>
+</head>
+
+{% block bodyopentag %}
+{% endblock %}
+
+	<header class="header">
+		<div class="header__inner">	
+
+			<div class="site-title">
+				<div class="site-title__inner">
+					<p class="site-title__text">Ludmila Kotvickaya</p>
+				</div>
+			</div>
+
+			<nav class="navigation">
+				<div class="navigation__inner">
+					<div class="navigation__menu-button">
+						<img class="navigation__menu-icon" src="{% static 'img/menu.png' %}"/>
+					</div>
+					<ul class="navigation__list">
+						<li>
+							<a href="{% url 'index' %}">Home</a>
+						</li>
+						<li>
+							<a href="{% url 'portfolio' %}">Portfolio</a>
+						</li>
+						<li>
+							<a href="{% url 'about' %}">About</a>
+						</li>
+						<li>
+							<a href="{% url 'index_blog' %}">Blog</a>
+						</li>
+						<li>
+							<a href="{% url 'contacts' %}">Contacts</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			
+
+		</div>
+		<nav class="header-navslider">
+				<div class="header-navslider__inner">
+					<ul class="header-navslider__list-main">
+						<li><a href="{% url 'index' %}">Home</a></li>
+						<li><a href="{% url 'portfolio' %}">Portfolio</a>
+							<ul class="header-navslider__list-second">
+								<li><a href="/portfolio/Studio">Studio</a></li>
+								<li><a href="/portfolio/City">City</a></li>
+								<li><a href="/portfolio/Landscape">Landscape</a></li>
+								<li><a href="/portfolio/People">People</a></li>
+								<li><a href="/portfolio/Moments%20of%20Life">Moments of Life</a></li>
+								<li><a href="/portfolio/Flowers">Flowers</a></li>
+								<li><a href="/portfolio/Food">Food</a></li>
+								<li><a href="/portfolio/Close%20up">Close up</a></li>
+								<li><a href="/portfolio/Abstract%20nature">Abstract nature</a></li>
+							</ul>
+						</li>
+						<li><a href="{% url 'about' %}">About</a></li>
+						<li><a href="{% url 'index_blog' %}">Blog</a></li>
+						<li><a href="{% url 'contacts' %}">Contacts</a></li>
+					</ul>
+				</div>
+			</nav>
+	</header>
+	<div class="header-buffer"></div>
+
+{% block content %}
+{% endblock %}
+
+<script src="{% static 'js/all_pages.js' %}"></script>
+
+{% block scripts %}
+{% endblock %}
+
+</body>
+</html>

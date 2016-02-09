@@ -1,0 +1,44 @@
+{% extends 'base_main.html' %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block content %}
+	<main class="blog-main-wrapper">
+		<div class="blog-main-wrapper__inner-posts">
+		{% for post in object_list %}
+			{% if not post.hide %}
+				<div class="pre-post">
+					<div class="pre-post__content">
+						<span class="pre-post__date">{{post.date_created}}</span>
+						<h3 class="pre-post__title">{{post.title}}</h3>
+						{% if post.description %}
+							<div class="pre-post__description">{{post.description}}</div>
+						{% endif %}
+					</div>
+					<a class="pre-post__link" href="{% url 'post' post.id %}">Открыть</a>
+				</div>
+			{% endif %}
+		{% endfor%}
+		</div>
+		<div class="pagination">
+			<span class="step-links">
+				{% if object_list.has_previous %}
+					<a  href="{{ object_list.previous_page_number }}">
+						<img class="pagination__arrow" src='{% static "img/icons/prev-blog-page.png" %}'>
+					</a>
+				{% endif %}
+				<span class="pagination__current">{{ object_list.number }}/{{ object_list.paginator.num_pages }}</span>
+				{% if object_list.has_next %}
+	            	<a href="{{ object_list.next_page_number }}">
+						<img class="pagination__arrow" src='{% static "img/icons/next-blog-page.png" %}'>
+	            	</a>
+	        	{% endif %}
+			</span>
+		</div>
+
+	</main>
+	<div class="contacts-social-buttons">
+            <a href="http://vk.com/id2495113"><img src="{% static 'img/icons/vk.png' %}" width="60px"></a>
+	   	    <a href="https://www.facebook.com/photo.lu8"><img src="{% static 'img/icons/fb.png' %}" width="60px"></a>	    
+	</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base_main.html' %}
+{% load static %}
+{% block title %}
+	<title>Контакты</title>
+{% endblock %}
+{% block content %}
+	<div class="block-info">
+		<div class="block-info_wrapper">
+			<div class="block-info__text">
+				<p>VK:<a  class="contacts-link" href="http://vk.com/id2495113">http://vk.com/id2495113</a></p>
+				<p>FB: <a class="contacts-link" href="https://www.facebook.com/photo.lu8">https://www.facebook.com/photo.lu8</a></p>
+  				<p>Skype: photo-lu8</p>
+				<p>Phone 1:<a class="contacts-link" href="tel:+79219372338">8 (921) 9372338</a></p>
+				<p>Phone 2:<a class="contacts-link" href="tel:88122724294">+7 812 2724294</a></p>
+				<p>E-mail: <a class="contacts-link" href="mailto:ludmila108@gmail.com">ludmila108@gmail.com</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="contacts-social-buttons">
+            <a href="http://vk.com/id2495113"><img src="{% static 'img/icons/vk.png' %}" width="60px"></a>
+	   	    <a href="https://www.facebook.com/photo.lu8"><img src="{% static 'img/icons/fb.png' %}" width="60px"></a>	    
+	</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base_main.html' %}
+{% load static %}
+{% block title %}
+	<title>Галереи</title>
+{% endblock %}
+{% block content %}
+	
+	<main class="main-container">
+		
+		
+
+		<div class="galleries-inner">
+			
+			<div class="loader_icon animated fadeInUp">
+				<img width="64px" src="{% static 'img/icons/loader.gif' %}">
+			</div>
+			<div class="galleries-holder" style="display:none">
+			{% for a in albums %}
+				<a class="gallery-cover" href="{% url 'photo_list' a.title %}" style="background-image: url({{a.theme_image.url}});">{{a.title}}</a>
+			
+			{% endfor %}
+			</div>
+		</div>
+	</main>
+{% endblock %}
+{% block scripts %}
+	<script src="{% static 'js/portfolio.js'%}"></script>
+{% endblock %}
