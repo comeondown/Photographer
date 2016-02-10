@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.views.generic import View, ListView, DetailView
-from main.models import Album, Photo
+from main.models import Album, Photo, BackgroundImage
 from Photographer import settings
 
 
@@ -20,7 +20,9 @@ def portfolio(request):
 
 
 def contacts(request):
-	return render_to_response("contacts.html", context={'body_class':"body-contacts"})
+	back = BackgroundImage.objects.filter(title="contacts")[0]
+	background_url = back.image.url
+	return render_to_response("contacts.html", context={'body_class':"body-background", 'background_url':"huy"})
 
 def about(request):
 	return render_to_response("about.html", context={'body_class':"body-about"})

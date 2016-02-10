@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from .models import Album, Photo
+from .models import Album, Photo, BackgroundImage
 
 class PhotosInline(admin.StackedInline):
 	model = Photo
@@ -32,3 +32,8 @@ class PhotoAdmin(admin.ModelAdmin):
 	list_display = ('id','name', 'admin_thumbnail', 'description', 'album')
 
 
+
+@admin.register(BackgroundImage)
+class BackgroundImageAdmin(admin.ModelAdmin):
+    fields = ['title', 'image']
+    list_display = ('title', 'admin_thumbnail')

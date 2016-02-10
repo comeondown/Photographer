@@ -5,11 +5,22 @@
 	{% block title %}
 		<title>Главная</title>
 	{% endblock %}
-	
+
+
+          
+            <style>
+                .body-background{
+                    background: 
+                    background-size: cover;
+                    height: 100vh;
+                }
+            </style>
+
+
 </head>
 
 {% block bodyopentag %}
-	<body class="{{body_class}}">
+	<body style="background:#ffffff url({{background_url}}) no-repeat fixed right top;"  class="{{body_class}}">
 {% endblock %}
 	
 {% block content %}

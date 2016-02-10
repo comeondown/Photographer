@@ -138,26 +138,7 @@ a {
 html {
   font-size: 30px;
 }
-.body-index {
-  background: #ffffff url("../img/background.jpg") no-repeat fixed right top;
-  background-size: cover;
-  height: 100vh;
-}
-.body-blog {
-  background: url("../img/blog-background.jpg") no-repeat fixed center center;
-  background-size: cover;
-  height: 100vh;
-}
-.body-contacts {
-  background: url("../img/contacts-background.jpg") no-repeat fixed center center;
-  background-size: cover;
-  height: 100vh;
-}
-.body-about {
-  background: url("../img/about-background.jpg") no-repeat fixed center center;
-  background-size: cover;
-  height: 100vh;
-}
+
 .body-photo{
   background-color: #3D3D3D;
   height: 100vh;
@@ -609,9 +590,13 @@ html {
   text-align: left;
   padding: 5px 10% 5px 10%;
 }
-.full-image-holder__photo-info--ready {
-  bottom: 7vh;
-}
+
+
+ .full-image-holder__photo-info--ready {
+  	bottom: 10vh;
+  }
+
+
 .full-image-holder__name {
   margin: 0;
   padding: 0;
