@@ -10,7 +10,6 @@
           
             <style>
                 .body-background{
-                    background: 
                     background-size: cover;
                     height: 100vh;
                 }
@@ -20,7 +19,11 @@
 </head>
 
 {% block bodyopentag %}
-	<body style="background:#ffffff url({{background_url}}) no-repeat fixed right top;"  class="{{body_class}}">
+	{% if body_class != "body-photo" %}
+	<body style="background:#ffffff url({{background_url}}) no-repeat fixed right top;background-size:cover;height:100vh;"  class="{{body_class}}">
+        {% else %}
+        <body class="{{body_class}}">
+        {% endif %}
 {% endblock %}
 	
 {% block content %}

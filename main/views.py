@@ -8,7 +8,9 @@ from Photographer import settings
 
 def index(request):
 	print([ x.title for x in Album.objects.all()])
-	return render_to_response("index.html", context = {'body_class':"body-index"});
+	back = BackgroundImage.objects.filter(title="main")[0]
+	background_url = back.image.url
+	return render_to_response("index.html", context = {'body_class':"body-index", "background_url":background_url})
 
 def doesntworking(request):
 	return render_to_response("doesntworking.html");
@@ -22,10 +24,12 @@ def portfolio(request):
 def contacts(request):
 	back = BackgroundImage.objects.filter(title="contacts")[0]
 	background_url = back.image.url
-	return render_to_response("contacts.html", context={'body_class':"body-background", 'background_url':"huy"})
+	return render_to_response("contacts.html", context={'body_class':"body-background", 'background_url':background_url})
 
 def about(request):
-	return render_to_response("about.html", context={'body_class':"body-about"})
+	back = BackgroundImage.objects.filter(title="about")[0]
+	background_url = back.image.url
+	return render_to_response("about.html", context={'body_class':"body-about", 'background_url':background_url})
 
 
 class PhotoList(ListView):

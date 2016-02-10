@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View, ListView, DetailView, FormView
 
 from .models import Post, Comment
+from main.models import BackgroundImage
 from .forms import CommentForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.detail import SingleObjectMixin
@@ -30,7 +31,10 @@ class PostListView(ListView):
 
 	def get_context_data(self, **kwargs):
 		context = super(PostListView, self).get_context_data(**kwargs)
-		context['body_class'] = 'body-blog'
+		back = BackgroundImage.objects.filter(title='blog')[0]
+		background_url = back.image.url
+		context['body_class'] = 'body-background'
+		context['background_url'] = background_url
 		return context
 
 
@@ -42,9 +46,12 @@ class PostDetailView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super(PostDetailView, self).get_context_data(**kwargs)
+		back = BackgroundImage.objects.filter(title='blog')[0]
+		background_url = back.image.url
 		context['form'] = CommentForm()
 		context['comms'] = self.get_object().comment_set.all();
-		context['body_class'] = 'body-blog'
+		context['body_class'] = 'body-background'
+		context['background_url'] = background_url
 		print(context['comms'])
 		return context
 
