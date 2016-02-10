@@ -6,9 +6,10 @@ from sorl.thumbnail import ImageField, delete
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
 from django.template.defaultfilters import slugify
+from django.core.files.uploadedfile import InMemoryUploadedFile
 import tempfile
 from PIL import Image
-from io import BytesIO
+from io import BytesIO, StringIO
 
 class MyFileStorage(FileSystemStorage):
 
@@ -18,21 +19,12 @@ class MyFileStorage(FileSystemStorage):
         filename, extension = os.path.splitext(name)
         new_name = temp_name + extension
         return super(MyFileStorage, self).save(new_name, content)
-    
-class MyFileStorageAlbum(MyFileStorage):
-	
-    def save(self, name, content):
-         #FUCK
-         return super(MyFileStorage, self).save(name, content)
-
 
 fs = MyFileStorage(location='/var/www/media/photos/', base_url="/media/photos/")
-fs_album =  MyFileStorageAlbum(location='/var/www/media/photos/', base_url="/media/photos/")
-
 
 class Album(models.Model):
     title = models.CharField(max_length=100, unique=True)
-    theme_image = ImageField(storage=fs_album, default='/img/default.jpg')
+    theme_image = models.ImageField(upload_to='photos/', default='/img/default.jpg')
     description = models.CharField(max_length=2000, blank=True, null=True)
 
     def __str__(self):
@@ -40,6 +32,17 @@ class Album(models.Model):
 
     def admin_thumbnail(self):
         return u'<img src="{0}" width="150px"/>'.format(self.theme_image.url)
+
+    def save(self, *args, **kwargs):
+        if self.theme_image:
+            img = Image.open(BytesIO(self.theme_image.read()))
+            if img.mode != 'RGB':
+                img = img.convert('RGB')
+        output = BytesIO()
+        img.save(output, format='JPEG', quality=40)
+        output.seek(0)
+        self.theme_image = InMemoryUploadedFile(output, 'ImageField', '{}.jpg'.format(self.theme_image.name.split('.')[0]), 'image/jpg', output.__sizeof__(), None)
+        return super(Album, self).save(*args, **kwargs)
 
     admin_thumbnail.short_description = 'Thumbnail'
     admin_thumbnail.allow_tags = True

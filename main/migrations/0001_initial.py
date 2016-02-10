@@ -15,27 +15,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Album',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
                 ('title', models.CharField(max_length=100, unique=True)),
-                ('theme_image', sorl.thumbnail.fields.ImageField(storage=main.models.MyFileStorageAlbum(location='/var/www/media/photos/', base_url='/media/photos/'), default='/img/default.jpg', upload_to='')),
-                ('description', models.CharField(blank=True, null=True, max_length=2000)),
+                ('theme_image', models.ImageField(upload_to='/var/www/media/album_covers/', default='/img/default.jpg')),
+                ('description', models.CharField(null=True, blank=True, max_length=2000)),
             ],
         ),
         migrations.CreateModel(
             name='BackgroundImage',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
                 ('title', models.CharField(max_length=100)),
-                ('image', models.ImageField(storage=main.models.MyFileStorage(location='/var/www/media/photos/', base_url='/media/photos/'), upload_to='')),
+                ('image', models.ImageField(upload_to='', storage=main.models.MyFileStorage(base_url='/media/photos/', location='/var/www/media/photos/'))),
             ],
         ),
         migrations.CreateModel(
             name='Photo',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
-                ('name', models.CharField(blank=True, max_length=200)),
-                ('description', models.CharField(blank=True, null=True, max_length=2000)),
-                ('photo', sorl.thumbnail.fields.ImageField(storage=main.models.MyFileStorage(location='/var/www/media/photos/', base_url='/media/photos/'), upload_to='')),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
+                ('name', models.CharField(max_length=200, blank=True)),
+                ('description', models.CharField(null=True, blank=True, max_length=2000)),
+                ('photo', sorl.thumbnail.fields.ImageField(upload_to='', storage=main.models.MyFileStorage(base_url='/media/photos/', location='/var/www/media/photos/'))),
                 ('album', models.ForeignKey(to='main.Album')),
             ],
         ),
