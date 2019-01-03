@@ -4,6 +4,8 @@
 <head>
 	<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
 	<link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+	<meta name="Keywords" content="Фотограф, фотографии, Людмила Котвицкая, студийные, природа, панорамы, профессиональная фотография, путешествия, работа, Китай, Люди, Мьянма, Гималаи, Япония, Бали, Блог.">
+	
 	{% block title %}
 	{% endblock %}
 	<link href='https://fonts.googleapis.com/css?family=Raleway:400,900,300' rel='stylesheet' type='text/css'>
@@ -59,6 +61,10 @@
 						<li><a href="{% url 'index' %}">Home</a></li>
 						<li><a href="{% url 'portfolio' %}">Portfolio</a>
 							<ul class="header-navslider__list-second">
+								{% for a in albums %}
+									<li><a href="/portfolio/{{ a.title|urlencode  }}">{{a.title}}</a></li>
+								{% endfor %}
+								<!-- 
 								<li><a href="/portfolio/Studio">Studio</a></li>
 								<li><a href="/portfolio/City">City</a></li>
 								<li><a href="/portfolio/Landscape">Landscape</a></li>
@@ -68,6 +74,7 @@
 								<li><a href="/portfolio/Food">Food</a></li>
 								<li><a href="/portfolio/Close%20up">Close up</a></li>
 								<li><a href="/portfolio/Abstract%20nature">Abstract nature</a></li>
+								-->
 							</ul>
 						</li>
 						<li><a href="{% url 'about' %}">About</a></li>

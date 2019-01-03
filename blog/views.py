@@ -52,7 +52,6 @@ class PostDetailView(DetailView):
 		context['comms'] = self.get_object().comment_set.all();
 		context['body_class'] = 'body-background'
 		context['background_url'] = background_url
-		print(context['comms'])
 		return context
 
 
@@ -75,7 +74,6 @@ class PostCommentAdd(SingleObjectMixin, FormView):
 	def get_context_data(self, **kwargs):
 		context = super(PostCommentAdd, self).get_context_data(**kwargs)
 		context['comms'] = self.get_object().comment_set.all();
-		print(context['comms'])
 		return context
 
 

@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}
 	<title>Блог</title>
+	<meta name="Description" content="Персональный блог фотографа Людмилы Котвицкой">
 {% endblock %}
 {% block content %}
 	<main class="blog-main-wrapper">
@@ -39,7 +40,14 @@
 
 	</main>
 	<div class="contacts-social-buttons">
-            <a href="http://vk.com/id2495113"><img src="{% static 'img/icons/vk.png' %}" width="60px"></a>
-	   	    <a href="https://www.facebook.com/photo.lu8"><img src="{% static 'img/icons/fb.png' %}" width="60px"></a>	    
+		<a href="http://vk.com/id2495113" target="_blank">
+			<img src="{% static 'img/icons/vk.png' %}" width="60px">
+		</a>
+		<a href="https://www.facebook.com/photo.lu8" target="_blank">
+			<img src="{% static 'img/icons/fb.png' %}" width="60px">
+		</a>	    
+		<a href="https://www.instagram.com/ludmila108/" target="_blank">
+			<img src="{% static 'img/icons/inst.png' %}" width="60px">
+		</a>
 	</div>
 {% endblock %}

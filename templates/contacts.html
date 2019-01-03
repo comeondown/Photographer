@@ -2,13 +2,16 @@
 {% load static %}
 {% block title %}
 	<title>Контакты</title>
+	<meta name="Desciption" content="контактная информация фотографа Людмилы Котвицкой">
 {% endblock %}
+
 {% block content %}
 	<div class="block-info">
 		<div class="block-info_wrapper">
 			<div class="block-info__text">
-				<p>VK:<a  class="contacts-link" href="http://vk.com/id2495113">http://vk.com/id2495113</a></p>
-				<p>FB: <a class="contacts-link" href="https://www.facebook.com/photo.lu8">https://www.facebook.com/photo.lu8</a></p>
+				<p>VK:<a class="contacts-link" href="http://vk.com/id2495113" target="_blank">http://vk.com/id2495113</a></p>
+				<p>FB: <a class="contacts-link" href="https://www.facebook.com/photo.lu8" target="_blank">https://www.facebook.com/photo.lu8</a></p>
+				<p>Instagram: <a class="contacts-link" href="https://www.instagram.com/ludmila108" target="_blank">https://www.instagram.com/ludmila108</a></p>
   				<p>Skype: photo-lu8</p>
 				<p>Phone 1:<a class="contacts-link" href="tel:+79219372338">8 (921) 9372338</a></p>
 				<p>Phone 2:<a class="contacts-link" href="tel:88122724294">+7 812 2724294</a></p>
@@ -17,7 +20,14 @@
 		</div>
 	</div>
 	<div class="contacts-social-buttons">
-            <a href="http://vk.com/id2495113"><img src="{% static 'img/icons/vk.png' %}" width="60px"></a>
-	   	    <a href="https://www.facebook.com/photo.lu8"><img src="{% static 'img/icons/fb.png' %}" width="60px"></a>	    
+		<a href="http://vk.com/id2495113" target="_blank">
+			<img src="{% static 'img/icons/vk.png' %}" width="60px">
+		</a>
+		<a href="https://www.facebook.com/photo.lu8" target="_blank">
+			<img src="{% static 'img/icons/fb.png' %}" width="60px">
+		</a>	    
+		<a href="https://www.instagram.com/ludmila108/" target="_blank">
+			<img src="{% static 'img/icons/inst.png' %}" width="60px">
+		</a>	    
 	</div>
 {% endblock %}

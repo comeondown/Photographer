@@ -13,8 +13,8 @@ urlpatterns = [
     url(r'^portfolio/$', views.portfolio, name="portfolio"),
     url(r'^contacts/$', views.contacts, name="contacts"),
     url(r'^about/$', views.about, name="about"),
-    #url(r'^$', views.index, name='index'),
-    url(r'^$', views.doesntworking, name='index'),
+    url(r'^$', views.index, name='index'),
+    #url(r'^$', views.doesntworking, name='index'),
     url(r'^redactor/', include('redactor.urls')),
 ]
 
